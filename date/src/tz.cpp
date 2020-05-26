@@ -350,9 +350,11 @@ discover_tz_dir()
     struct stat sb;
     using namespace std;
 
+#if !TARGET_OS_IPHONE
     auto tz_dir_env = getenv("TZDIR");
     if (tz_dir_env != nullptr)
         return tz_dir_env;
+#endif
 
 #  ifndef __APPLE__
     CONSTDATA auto tz_dir_default = "/usr/share/zoneinfo";
